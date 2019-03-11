@@ -19,6 +19,10 @@ h1, #authors {
   text-align: center;
 }
 
+h2 {
+	display: inline;
+}
+
 #deriv {
   font-size: 18pt;
 }
@@ -30,20 +34,17 @@ h1, #authors {
   <p id = "authors"><i>  Colin Christian - Spencer Andersen </i></p>
   <div class="row">
     <div class="column">
-      <canvas id="canvas" width="300" height="300"></canvas>
-      <h2>Disk</h2>
-      Mass: <input type="double" id="DiskM" oninput="calculateW()"> kg<br>
-      Radius: <input type="double" id="DiskR" oninput="calculateW()"> m<br>
-      <h2>Train</h2>
-      Mass: <input type="double" id="TrainM" oninput="calculateW()"> kg<br>
-      Radius: <input type="double" id="TrainR" oninput="calculateW()"> m<br>
-      Linear Velocity: <input type="double" id="TrainV" oninput="calculateW()"> m/s<br>
-      <h2>
-        Equation: AngularVelocity =  -m<sub>t</sub>v<sub>t</sub>r<sub>t</sub> / ½m<sub>d</sub>r<sub>d</sub><sup>2</sup>+m<sub>t</sub>r<sub>t</sub><sup>2</sup>
-      </h2>
-      <h2>
-        Calculated Disk Angular Velocity : <input type="double" id="output" readonly></input> rad/s
-      </h2>
+      <canvas id="canvas" width="300" height="300"></canvas><br>
+      <h2>Disk</h2><br>
+      Mass: <input type="double" id="DiskM" oninput="calculateW()" value="7.00"> kg<br>
+      Radius: <input type="double" id="DiskR" oninput="calculateW()" value="1.00"> m<br><br>
+      <h2>Train</h2><br>
+      Mass: <input type="double" id="TrainM" oninput="calculateW()" value="1.20"> kg<br>
+      Radius: <input type="double" id="TrainR" oninput="calculateW()" value=".95"> m<br>
+      Linear Velocity: <input type="double" id="TrainV" oninput="calculateW()" value=".600"> m/s<br><br>
+      <h2 inline> Calculated ⍵<sub>d/g</sub>:&nbsp;</h2> <input type="hidden" id="output" readonly ></input> rad/s 
+	  <button id="toggle" onclick="toggleSolution()" value="show">Show</button>
+	  <br><br>
       <button id="go" onclick="goButton()" value="Go">Go</button>
     </div>
     <div class="column">
@@ -55,16 +56,16 @@ h1, #authors {
           I<sub>t</sub>⍵<sub>t/g</sub> = -I<sub>d</sub>⍵<sub>d/g</sub><br>
           I<sub>t</sub>(⍵<sub>t/d</sub>+⍵<sub>d/g</sub>) = -I<sub>d</sub>⍵<sub>d/g</sub><br>
           I<sub>d</sub>⍵<sub>d/g</sub>+I<sub>t</sub>⍵<sub>d/g</sub> = -I<sub>t</sub>⍵<sub>t/d</sub><br>
-          ⍵<sub>d/g</sub> = -I<sub>t</sub>⍵<sub>t/d</sub> / I<sub>d</sub>+I<sub>t</sub><br>
-          ⍵<sub>d/g</sub> = -m<sub>t</sub>r<sub>t</sub><sup>2</sup>v<sub>t</sub>/r<sub>t</sub> / ½m<sub>d</sub>r<sub>d</sub><sup>2</sup>+m<sub>t</sub>r<sub>t</sub><sup>2</sup><br>
-          ⍵<sub>d/g</sub> = -m<sub>t</sub>v<sub>t</sub>r<sub>t</sub> / ½m<sub>d</sub>r<sub>d</sub><sup>2</sup>+m<sub>t</sub>r<sub>t</sub><sup>2</sup>
+          ⍵<sub>d/g</sub> = -I<sub>t</sub>⍵<sub>t/d</sub> / (I<sub>d</sub>+I<sub>t</sub>)<br>
+          ⍵<sub>d/g</sub> = -m<sub>t</sub>r<sub>t</sub><sup>2</sup>v<sub>t</sub>/r<sub>t</sub> / (½m<sub>d</sub>r<sub>d</sub><sup>2</sup>+m<sub>t</sub>r<sub>t</sub><sup>2</sup>)<br>
+          ⍵<sub>d/g</sub> = -m<sub>t</sub>v<sub>t</sub>r<sub>t</sub> / (½m<sub>d</sub>r<sub>d</sub><sup>2</sup>+m<sub>t</sub>r<sub>t</sub><sup>2</sup>)
         </p>
         <h2>Notes:</h2>
         <p>
           -v<sub>t</sub> means linear speed of the train with respect to the disk<br>
           -If this problem had no relative speed involved, we could just say:<br>
-          ⍵<sub>d</sub> = -m<sub>t</sub>v<sub>t</sub>r<sub>t</sub> / I<sub>d</sub><br>
-          But since it's realtive speed, we can't exactly do that. Conceptually, that's why
+          &nbsp; &nbsp; &nbsp; &nbsp;⍵<sub>d</sub> = -m<sub>t</sub>v<sub>t</sub>r<sub>t</sub> / I<sub>d</sub><br>
+          But since it's relative speed, we can't exactly do that. Conceptually, that's why
           our final equation is that but with the moment of inertia of the train also in the denominator
         </p>
     </div>

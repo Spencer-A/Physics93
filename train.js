@@ -114,3 +114,17 @@ function goButton() {
     }
 
 }
+
+function toggleSolution(){
+	var soln = document.getElementById("output");
+	var button = document.getElementById("toggle");
+	
+	if(soln.type == "hidden"){
+		soln.type = "double";
+		button.innerHTML = "hide";
+	}
+	else{
+		soln.type = "hidden";
+		button.innerHTML = "show";
+	}
+}
