@@ -37,12 +37,12 @@ h2 {
       <canvas id="canvas" width="300" height="300"></canvas><br>
       <h2>Disk</h2><br>
       Mass: <input type="double" id="DiskM" oninput="calculateW()" value="7.00"> kg<br>
-      Radius: <input type="double" id="DiskR" oninput="calculateW()" value="1.00"> m<br><br>
+      Radius: <input type="double" id="DiskR" oninput="calculateW()" value=".50"> m<br><br>
       <h2>Train</h2><br>
       Mass: <input type="double" id="TrainM" oninput="calculateW()" value="1.20"> kg<br>
-      Radius: <input type="double" id="TrainR" oninput="calculateW()" value=".95"> m<br>
+      Radius: <input type="double" id="TrainR" oninput="calculateW()" value=".475"> m<br>
       Linear Velocity: <input type="double" id="TrainV" oninput="calculateW()" value=".600"> m/s<br><br>
-      <h2 inline> Calculated ⍵<sub>d/g</sub>:&nbsp;</h2> <input type="hidden" id="output" readonly ></input> rad/s 
+      <h2 inline> Calculated ⍵<sub>d/g</sub>:&nbsp;</h2> <input type="hidden" id="output" readonly ></input> rad/s
 	  <button id="toggle" onclick="toggleSolution()" value="show">Show</button>
 	  <br><br>
       <button id="go" onclick="goButton()" value="Go">Go</button>
@@ -51,7 +51,7 @@ h2 {
         <h2>Derivation of Equation</h2>
         <p id="deriv">
           L<sub>i</sub> = L<sub>f</sub><br>
-          0 = L<sub>t+L</sub>d<br>
+          0 = L<sub>t</sub>+L<sub>d</sub><br>
           L<sub>t</sub> = -L<sub>d</sub><br>
           I<sub>t</sub>⍵<sub>t/g</sub> = -I<sub>d</sub>⍵<sub>d/g</sub><br>
           I<sub>t</sub>(⍵<sub>t/d</sub>+⍵<sub>d/g</sub>) = -I<sub>d</sub>⍵<sub>d/g</sub><br>
